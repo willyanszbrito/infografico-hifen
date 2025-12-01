@@ -23,18 +23,16 @@
             background-color: var(--bg-body);
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Evita barras de rolagem indesejadas */
         }
 
-        /* O "Papel" Infográfico */
         .poster-container {
             background: white;
             width: 98vw;
-            height: 96vh;
+            height: 96vh; /* Altura fixa para Desktop */
             border-radius: 8px;
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
             display: flex;
@@ -42,15 +40,28 @@
             border-top: 15px solid var(--azul-destaque);
             box-sizing: border-box;
             padding: 10px;
+            position: relative;
         }
 
-        /* Cabeçalho Geral */
         header {
             text-align: center;
             border-bottom: 2px solid #eee;
             padding-bottom: 5px;
             margin-bottom: 10px;
             flex-shrink: 0;
+            position: relative; /* Para posicionar o QR Code */
+        }
+
+        .qr-code-img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            padding: 2px;
+            background: white;
         }
 
         .badge-main {
@@ -75,17 +86,15 @@
             line-height: 1.1;
         }
 
-        /* Grid de 3 Colunas */
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr; /* 3 colunas iguais */
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
             flex-grow: 1;
             height: 100%;
             overflow: hidden;
         }
 
-        /* Cada Coluna (Card) */
         .column-card {
             background-color: var(--bg-creme);
             border-radius: 8px;
@@ -121,29 +130,22 @@
             font-size: 1.2rem;
         }
 
-        .subtitle {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-            margin-top: 2px;
-        }
+        .subtitle { font-size: 0.85rem; color: #7f8c8d; margin-top: 2px; }
 
-        /* Área do Diagrama */
         .mermaid-wrapper {
             flex-grow: 1;
             display: flex;
-            align-items: center; /* Centraliza verticalmente */
+            align-items: center;
             justify-content: center;
             overflow: hidden;
         }
         
-        /* Ajuste fino para os SVGs não estourarem */
         .mermaid-wrapper svg {
             max-width: 100% !important;
             height: auto !important;
             max-height: 100% !important;
         }
 
-        /* Rodapé */
         footer {
             text-align: center;
             font-size: 0.8rem;
@@ -154,9 +156,47 @@
             flex-shrink: 0;
         }
 
-        /* Ajustes específicos Mermaid */
         .node i { font-size: 20px; margin-bottom: 2px; display: block; }
         .node rect { rx: 5px; ry: 5px; }
+
+        /* --- RESPONSIVIDADE (MOBILE) --- */
+        @media (max-width: 900px) {
+            body {
+                height: auto;
+                align-items: flex-start;
+                padding: 10px 0;
+            }
+
+            .poster-container {
+                width: 95vw;
+                height: auto; /* Altura automática para rolar */
+                overflow: visible;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr; /* Uma coluna só */
+                overflow: visible;
+                height: auto;
+            }
+
+            .column-card {
+                height: auto;
+                min-height: 400px; /* Garante espaço para o gráfico */
+                margin-bottom: 15px;
+            }
+            
+            h1 { font-size: 1.5rem; }
+            
+            .qr-code-img {
+                position: relative;
+                transform: none;
+                right: auto;
+                top: auto;
+                margin-top: 10px;
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,6 +205,7 @@
         <header>
             <div class="badge-main">A Nova Ortografia</div>
             <h1>O Uso do Hífen (Regras Pós-Acordo)</h1>
+            <img src="qrcode_infografico.png" alt="QR Code" class="qr-code-img">
         </header>
 
         <div class="content-grid">
