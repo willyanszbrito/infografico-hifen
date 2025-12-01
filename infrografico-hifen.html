@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: O Uso do Hífen</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-creme: #fdfbf7;
+            --vermelho-alerta: #c0392b;
+            --verde-sucesso: #27ae60;
+            --azul-destaque: #2980b9;
+            --roxo-dobra: #8e44ad;
+            --cinza-escuro: #2c3e50;
+            --amarelo-aviso: #f1c40f;
+            --bg-body: #333;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Evita barras de rolagem indesejadas */
+        }
+
+        /* O "Papel" Infográfico */
+        .poster-container {
+            background: white;
+            width: 98vw;
+            height: 96vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            border-top: 15px solid var(--azul-destaque);
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        /* Cabeçalho Geral */
+        header {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        .badge-main {
+            background-color: var(--azul-destaque);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 4px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--cinza-escuro);
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        /* Grid de 3 Colunas */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 colunas iguais */
+            gap: 15px;
+            flex-grow: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Cada Coluna (Card) */
+        .column-card {
+            background-color: var(--bg-creme);
+            border-radius: 8px;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .column-header {
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 5px;
+        }
+
+        .column-badge {
+            background-color: var(--amarelo-aviso);
+            color: var(--cinza-escuro);
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin: 5px 0 0 0;
+            color: var(--cinza-escuro);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+
+        /* Área do Diagrama */
+        .mermaid-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* Ajuste fino para os SVGs não estourarem */
+        .mermaid-wrapper svg {
+            max-width: 100% !important;
+            height: auto !important;
+            max-height: 100% !important;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            padding-top: 5px;
+            border-top: 1px solid #eee;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        /* Ajustes específicos Mermaid */
+        .node i { font-size: 20px; margin-bottom: 2px; display: block; }
+        .node rect { rx: 5px; ry: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        <header>
+            <div class="badge-main">A Nova Ortografia</div>
+            <h1>O Uso do Hífen (Regras Pós-Acordo)</h1>
+        </header>
+
+        <div class="content-grid">
+            
+            <div class="column-card">
+                <div class="column-header">
+                    <span class="column-badge">Parte 1</span>
+                    <h3>VOGAIS</h3>
+                    <div class="subtitle">Opostos se atraem, iguais se repelem</div>
+                </div>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid">
+                    graph TD
+                        classDef default font-family:'Roboto',font-size:12px,fill:#fff;
+                        classDef inicio fill:#2c3e50,stroke:none,color:#fff,font-weight:bold;
+                        classDef categoria fill:#fff,stroke:#95a5a6,stroke-width:2px;
+                        classDef separa fill:#c0392b,stroke:none,color:#fff,font-weight:bold;
+                        classDef junta fill:#27ae60,stroke:none,color:#fff,font-weight:bold;
+                        classDef exemplo fill:#fff,stroke:#bdc3c7,stroke-dasharray:3;
+
+                        M1["<i class='fa-solid fa-font'></i>Termina em VOGAL?"]:::inicio
+                        
+                        M1 -->|Iguais| V1["<i class='fa-solid fa-minimize'></i>SEPARA (-)"]:::separa
+                        M1 -->|Diferentes| V2["<i class='fa-solid fa-maximize'></i>JUNTA (+)"]:::junta
+                        
+                        V1 --- ExV1["micro-ondas<br>anti-inflamatório"]:::exemplo
+                        V2 --- ExV2["autoescola<br>semiaberto"]:::exemplo
+                    </pre>
+                </div>
+            </div>
+
+            <div class="column-card">
+                <div class="column-header">
+                    <span class="column-badge">Parte 2</span>
+                    <h3>CONSOANTES & R/S</h3>
+                    <div class="subtitle">Regras de encontro e duplicação</div>
+                </div>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid">
+                    graph TD
+                        classDef default font-family:'Roboto',font-size:12px,fill:#fff;
+                        classDef inicio fill:#2c3e50,stroke:none,color:#fff,font-weight:bold;
+                        classDef categoria fill:#f8f9fa,stroke:#95a5a6,stroke-width:2px;
+                        classDef separa fill:#c0392b,stroke:none,color:#fff,font-weight:bold;
+                        classDef junta fill:#27ae60,stroke:none,color:#fff,font-weight:bold;
+                        classDef dobra fill:#8e44ad,stroke:none,color:#fff,font-weight:bold;
+                        classDef exemplo fill:#fff,stroke:#bdc3c7,stroke-dasharray:3;
+
+                        M2["<i class='fa-solid fa-magnifying-glass'></i>Análise"]:::inicio
+                        M2 --> R2["Termina em<br>CONSOANTE?"]:::categoria
+                        M2 --> R3["Vogal +<br>R ou S?"]:::categoria
+
+                        R2 -->|Iguais| C1["<i class='fa-solid fa-minimize'></i>SEPARA"]:::separa
+                        R2 -->|Diferentes| C2["<i class='fa-solid fa-maximize'></i>JUNTA"]:::junta
+
+                        C1 --- ExC1["sub-base<br>inter-regional"]:::exemplo
+                        C2 --- ExC2["hipersensível<br>interescolar"]:::exemplo
+
+                        R3 --> RS["<i class='fa-solid fa-copy'></i>DOBRA (rr/ss)"]:::dobra
+                        RS --- ExRS["antissocial<br>minissaia"]:::exemplo
+                    </pre>
+                </div>
+            </div>
+
+            <div class="column-card">
+                <div class="column-header">
+                    <span class="column-badge">Parte 3</span>
+                    <h3>CASOS ESPECIAIS</h3>
+                    <div class="subtitle">Letra H e Prefixos Tônicos</div>
+                </div>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid">
+                    graph TD
+                        classDef default font-family:'Roboto',font-size:12px,fill:#fff;
+                        classDef inicio fill:#2c3e50,stroke:none,color:#fff,font-weight:bold;
+                        classDef categoria fill:#f8f9fa,stroke:#95a5a6,stroke-width:2px;
+                        classDef separa fill:#c0392b,stroke:none,color:#fff,font-weight:bold;
+                        classDef exemplo fill:#fff,stroke:#bdc3c7,stroke-dasharray:3;
+
+                        M3["<i class='fa-solid fa-triangle-exclamation'></i>Atenção"]:::inicio
+                        M3 --> R4["Diante de<br>H?"]:::categoria
+                        M3 --> R5["Prefixos<br>Tônicos"]:::categoria
+
+                        R4 --> H["<i class='fa-solid fa-road-barrier'></i>SEPARA (-)<br>H é barreira"]:::separa
+                        H --- ExH["super-homem<br>anti-higiênico"]:::exemplo
+
+                        R5 --> F["<i class='fa-solid fa-thumbtack'></i>SEMPRE HÍFEN<br>Ex, Pré, Pós"]:::separa
+                        F --- ExF["ex-aluno<br>pré-natal"]:::exemplo
+                    </pre>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <strong>Fonte</strong>: FERREIRA, Mauro. <strong>360º</strong>: aprender e praticar gramática. 4. ed. São Paulo: FTD, 2015 | Design: <strong>Janaina Moura Batista</strong>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            flowchart: { 
+                useMaxWidth: true, 
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
